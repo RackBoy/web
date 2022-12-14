@@ -5,13 +5,6 @@ import io
 import json
 from flask import Flask, render_template, request, url_for
 
-#app = Flask(__name__)
-
-
-#@app.route('/')
-#def index():
-    #return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
-
 common = {
     'first_name': 'Joel',
     'last_name': 'Soto'
@@ -21,11 +14,7 @@ common = {
 def index():
     return render_template('home.html', common=common)
 
-#@freezer.register_generator
-
-#@app.route('/projects.html') 
 @app.route('/projects') 
-#@app.route('/<path:path>/') 
 def projects():
     data = get_static_json("static/projects/projects.json")['projects']
     data.sort(key=order_projects_by_weight, reverse=True)
